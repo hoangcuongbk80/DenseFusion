@@ -24,6 +24,9 @@ from datasets.ycb.dataset import PoseDataset
 from lib.network import PoseNet, PoseRefineNet
 from lib.transformations import euler_matrix, quaternion_matrix, quaternion_from_matrix
 
+#cuong
+import matplotlib.pyplot as plt
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset_root', type=str, default = '', help='dataset root dir')
 parser.add_argument('--model', type=str, default = '',  help='resume PoseNet model')
@@ -152,14 +155,20 @@ for now in range(0, 2949):
             mask_depth = ma.getmaskarray(ma.masked_not_equal(depth, 0))
             mask_label = ma.getmaskarray(ma.masked_equal(label, itemid))
             mask = mask_label * mask_depth
-
             choose = mask[rmin:rmax, cmin:cmax].flatten().nonzero()[0]
+
+            #cuong
+            if len(choose) == 0:
+                print('Error at img', now, 'index', idx)
+                continue
+            
             if len(choose) > num_points:
                 c_mask = np.zeros(len(choose), dtype=int)
                 c_mask[:num_points] = 1
                 np.random.shuffle(c_mask)
                 choose = choose[c_mask.nonzero()]
             else:
+                # Cuong, Error here when len(choose)=0
                 choose = np.pad(choose, (0, num_points - len(choose)), 'wrap')
 
             depth_masked = depth[rmin:rmax, cmin:cmax].flatten()[choose][:, np.newaxis].astype(np.float32)
@@ -172,9 +181,35 @@ for now in range(0, 2949):
             pt1 = (xmap_masked - cam_cy) * pt2 / cam_fy
             cloud = np.concatenate((pt0, pt1, pt2), axis=1)
 
-            img_masked = np.array(img)[:, :, :3]
+            img_masked = np.array(img)[:, :, :3]  
             img_masked = np.transpose(img_masked, (2, 0, 1))
             img_masked = img_masked[:, rmin:rmax, cmin:cmax]
+
+            print('cuong ', len(choose))
+            img_masked_display = np.array(img)[:, :, :3]        
+            img_masked_display = img_masked_display[rmin:rmax, cmin:cmax, :]
+            print(img_masked_display.shape)
+    
+            plt.subplot(3, 3, 1)
+            plt.title("rgb")
+            plt.imshow(img)
+            plt.subplot(3, 3, 2)
+            plt.title("depth")
+            plt.imshow(depth)
+            plt.subplot(3, 3, 3)
+            plt.title("label")
+            plt.imshow(label)
+            plt.subplot(3, 3, 4)
+            plt.title("mask_label")
+            plt.imshow(mask_label)
+            plt.subplot(3, 3, 5)
+            plt.title("mask")
+            plt.imshow(mask)
+            plt.subplot(3, 3, 6)
+            plt.title("img_masked_display")
+            plt.imshow(img_masked_display)
+            plt.show()       
+
 
             cloud = torch.from_numpy(cloud.astype(np.float32))
             choose = torch.LongTensor(choose.astype(np.int32))
@@ -236,6 +271,6 @@ for now in range(0, 2949):
             my_result_wo_refine.append([0.0 for i in range(7)])
             my_result.append([0.0 for i in range(7)])
 
-    scio.savemat('{0}/{1}.mat'.format(result_wo_refine_dir, '%04d' % now), {'poses':my_result_wo_refine})
-    scio.savemat('{0}/{1}.mat'.format(result_refine_dir, '%04d' % now), {'poses':my_result})
-    print("Finish No.{0} keyframe".format(now))
+    #scio.savemat('{0}/{1}.mat'.format(result_wo_refine_dir, '%04d' % now), {'poses':my_result_wo_refine})
+    #scio.savemat('{0}/{1}.mat'.format(result_refine_dir, '%04d' % now), {'poses':my_result})
+    #print("Finish No.{0} keyframe".format(now))

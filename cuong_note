@@ -1,0 +1,15 @@
+#install:
+aass@aass-Z87X-D3H:~$ python3 -m venv env
+aass@aass-Z87X-D3H:~$ source ./env/bin/activate
+(env) aass@aass-Z87X-D3H:~$ pip install Desktop/torch-0.4.1-cp35-cp35m-linux_x86_64.whl
+(env) aass@aass-Z87X-D3H:~$ pip install numpy scipy
+(env) aass@aass-Z87X-D3H:~$ pip install torchvision
+(env) aass@aass-Z87X-D3H:~$ pip install pyyaml
+(env) aass@aass-Z87X-D3H:~$ pip install cffi
+(env) aass@aass-Z87X-D3H:~$ pip install pygit2
+
+#train:
+aass@aass-Z87X-D3H:~/Hoang-Cuong/Seg_SLAM/DenseFusion$ source ./env/bin/activate
+(env) aass@aass-Z87X-D3H:~/Hoang-Cuong/Seg_SLAM/DenseFusion$ sh ./experiments/scripts/train_ycb.sh
+#Evaluation
+(env) aass@aass-Z87X-D3H:~/Hoang-Cuong/Seg_SLAM/DenseFusion$ sh ./experiments/scripts/eval_ycb.sh

@@ -1,0 +1,4 @@
+2019-06-14 17:19:45,295 : Train time 00h 00m 00s, Training started
+2019-06-14 17:19:47,707 : Train time 00h 00m 02s Epoch 1 Batch 1 Frame 8 Avg_dis:0.2056481558829546
+2019-06-14 17:19:48,749 : Train time 00h 00m 03s Epoch 1 Batch 2 Frame 16 Avg_dis:0.17580542154610157
+2019-06-14 17:19:49,871 : Train time 00h 00m 04s Epoch 1 Batch 3 Frame 24 Avg_dis:0.11196464765816927

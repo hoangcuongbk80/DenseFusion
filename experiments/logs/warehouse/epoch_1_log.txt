@@ -1,0 +1,14 @@
+2019-06-17 08:53:13,951 : Train time 00h 00m 00s, Training started
+2019-06-17 08:53:17,749 : Train time 00h 00m 03s Epoch 1 Batch 1 Frame 8 Avg_dis:1.0150708109140396
+2019-06-17 08:53:19,481 : Train time 00h 00m 05s Epoch 1 Batch 2 Frame 16 Avg_dis:0.7536315210163593
+2019-06-17 08:53:21,077 : Train time 00h 00m 07s Epoch 1 Batch 3 Frame 24 Avg_dis:0.46706959046423435
+2019-06-17 08:53:22,718 : Train time 00h 00m 08s Epoch 1 Batch 4 Frame 32 Avg_dis:0.6059080921113491
+2019-06-17 08:53:24,365 : Train time 00h 00m 10s Epoch 1 Batch 5 Frame 40 Avg_dis:0.767908588051796
+2019-06-17 08:53:25,682 : Train time 00h 00m 11s Epoch 1 Batch 6 Frame 48 Avg_dis:1.160955373197794
+2019-06-17 08:53:27,269 : Train time 00h 00m 13s Epoch 1 Batch 7 Frame 56 Avg_dis:0.8227290585637093
+2019-06-17 08:53:29,096 : Train time 00h 00m 15s Epoch 1 Batch 8 Frame 64 Avg_dis:0.6652211882174015
+2019-06-17 08:53:30,958 : Train time 00h 00m 17s Epoch 1 Batch 9 Frame 72 Avg_dis:0.470399159938097
+2019-06-17 08:53:32,925 : Train time 00h 00m 18s Epoch 1 Batch 10 Frame 80 Avg_dis:0.6388503462076187
+2019-06-17 08:53:35,033 : Train time 00h 00m 21s Epoch 1 Batch 11 Frame 88 Avg_dis:0.41299586556851864
+2019-06-17 08:53:36,991 : Train time 00h 00m 23s Epoch 1 Batch 12 Frame 96 Avg_dis:0.725007202476263
+2019-06-17 08:53:38,585 : Train time 00h 00m 24s Epoch 1 Batch 13 Frame 104 Avg_dis:0.8010236341506243
